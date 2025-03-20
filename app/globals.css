@@ -28,6 +28,8 @@
   --background-color: #f9f9f9;
   --header-background: white;
   --header-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --instruction-bg: #e6f3ff;
+  --instruction-border: #2573b3;
 }
 
 * {
@@ -37,7 +39,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -57,7 +60,8 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Changed from space-between to align items to the left */
+  justify-content: flex-start;
+  /* Changed from space-between to align items to the left */
   padding: 0 var(--content-padding);
   position: fixed;
   top: 0;
@@ -85,7 +89,8 @@ body {
   white-space: nowrap;
 }
 
-h1, .title {
+h1,
+.title {
   font-size: clamp(1.2rem, 5vw, 1.8rem);
   margin: 0;
 }
@@ -132,7 +137,8 @@ p {
 }
 
 .instructions-container {
-  background-color: white;
+  background-color: var(--instruction-bg); /* Light blue background */
+  border: 2px solid var(--instruction-border); /* Darker blue border */
   border-radius: 8px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -161,31 +167,31 @@ p {
     /* Increase header height for mobile */
     --header-height: 70px;
   }
-  
+
   body {
     /* Increase top padding for mobile to prevent header overlap */
     padding-top: calc(var(--header-height) + var(--content-padding) * 1.5);
   }
-  
+
   .header {
     height: var(--header-height);
     padding: 8px var(--content-padding);
     flex-wrap: nowrap;
   }
-  
+
   /* Ensure the title is properly sized and wrapped */
   .title-container {
     max-width: 80%;
   }
-  
+
   .title {
     font-size: clamp(1rem, 4vw, 1.4rem);
   }
-  
+
   .instructions-container {
     padding: 1.2rem;
   }
-  
+
   /* Additional spacing for the first heading */
   .section-title {
     margin-top: 0.5rem;
@@ -198,45 +204,46 @@ p {
     /* Increase header height even more for very small screens */
     --header-height: 80px;
   }
-  
+
   body {
     /* Increase padding further for small screens */
     padding-top: calc(var(--header-height) + var(--content-padding));
     line-height: 1.4;
   }
-  
+
   .header {
     /* Allow the header to wrap if needed */
     height: auto;
     min-height: var(--header-height);
     padding: 8px var(--content-padding);
   }
-  
+
   .favicon {
     width: 30px;
     height: 30px;
     margin-right: 8px;
   }
-  
+
   .title-container {
     max-width: 75%;
   }
-  
-  h1, .title {
+
+  h1,
+  .title {
     font-size: 1rem;
     /* Allow title to wrap on small screens */
     white-space: normal;
   }
-  
+
   .section-title {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-  
+
   .instructions-container {
     padding: 1rem;
   }
-  
+
   .review-points li {
     margin-bottom: 0.6rem;
   }
