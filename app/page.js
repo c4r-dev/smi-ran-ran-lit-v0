@@ -64,7 +64,7 @@ export default function Home() {
         {selectedPaper && (
           <div className="selected-paper-info">
             <h3>You selected: {selectedPaper}</h3>
-            <p>The paper's methods section would be displayed here.</p>
+            <p>The paper&apos;s methods section would be displayed here.</p>
           </div>
         )}
       </section>
