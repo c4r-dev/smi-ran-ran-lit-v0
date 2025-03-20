@@ -160,6 +160,67 @@ p {
   font-size: clamp(0.95rem, 2.5vw, 1.1rem);
 }
 
+/* Paper Selection Styles */
+.paper-selection-heading {
+  margin: 2rem 0 1rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+}
+
+.paper-selection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.paper-option {
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.paper-option:hover {
+  border-color: #2573b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.paper-option.selected {
+  border-color: #2573b3;
+  background-color: #f0f8ff;
+  box-shadow: 0 4px 12px rgba(37, 115, 179, 0.2);
+}
+
+.paper-option h3 {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.paper-citation {
+  color: #666;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  margin-top: auto;
+  font-style: italic;
+}
+
+.selected-paper-info {
+  background-color: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
 /* Responsive breakpoints */
 @media (max-width: 768px) {
   :root {
@@ -195,6 +256,14 @@ p {
   /* Additional spacing for the first heading */
   .section-title {
     margin-top: 0.5rem;
+  }
+  
+  .paper-selection {
+    grid-template-columns: 1fr;
+  }
+  
+  .paper-option {
+    padding: 1rem;
   }
 }
 
