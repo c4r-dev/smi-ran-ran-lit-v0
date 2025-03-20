@@ -48,6 +48,7 @@ body {
   background-color: var(--background-color);
   line-height: 1.6;
   padding: var(--content-padding);
+  /* Increase the top padding to prevent header overlap */
   padding-top: calc(var(--header-height) + var(--content-padding) * 2);
   overflow-x: hidden;
 }
@@ -56,7 +57,7 @@ body {
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; /* Changed from space-between to align items to the left */
   padding: 0 var(--content-padding);
   position: fixed;
   top: 0;
@@ -78,7 +79,7 @@ body {
 
 .title-container {
   flex-grow: 1;
-  width: 100%;
+  /* Remove width: 100% to prevent pushing other elements */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -119,6 +120,8 @@ p {
 }
 
 .review-section {
+  /* Add margin-top to create more space after the header */
+  margin-top: 1rem;
   margin-bottom: 2rem;
 }
 
@@ -155,26 +158,58 @@ p {
 @media (max-width: 768px) {
   :root {
     --content-padding: 15px;
+    /* Increase header height for mobile */
+    --header-height: 70px;
   }
   
   body {
-    padding-top: calc(var(--header-height) + var(--content-padding));
+    /* Increase top padding for mobile to prevent header overlap */
+    padding-top: calc(var(--header-height) + var(--content-padding) * 1.5);
   }
   
   .header {
-    height: auto;
-    min-height: var(--header-height);
-    padding: 10px var(--content-padding);
+    height: var(--header-height);
+    padding: 8px var(--content-padding);
+    flex-wrap: nowrap;
+  }
+  
+  /* Ensure the title is properly sized and wrapped */
+  .title-container {
+    max-width: 80%;
+  }
+  
+  .title {
+    font-size: clamp(1rem, 4vw, 1.4rem);
   }
   
   .instructions-container {
     padding: 1.2rem;
+  }
+  
+  /* Additional spacing for the first heading */
+  .section-title {
+    margin-top: 0.5rem;
   }
 }
 
 @media (max-width: 480px) {
   :root {
     --content-padding: 10px;
+    /* Increase header height even more for very small screens */
+    --header-height: 80px;
+  }
+  
+  body {
+    /* Increase padding further for small screens */
+    padding-top: calc(var(--header-height) + var(--content-padding));
+    line-height: 1.4;
+  }
+  
+  .header {
+    /* Allow the header to wrap if needed */
+    height: auto;
+    min-height: var(--header-height);
+    padding: 8px var(--content-padding);
   }
   
   .favicon {
@@ -183,20 +218,23 @@ p {
     margin-right: 8px;
   }
   
-  h1, .title {
-    font-size: 1.2rem;
+  .title-container {
+    max-width: 75%;
   }
   
-  body {
-    line-height: 1.4;
+  h1, .title {
+    font-size: 1rem;
+    /* Allow title to wrap on small screens */
+    white-space: normal;
+  }
+  
+  .section-title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   
   .instructions-container {
     padding: 1rem;
-  }
-  
-  .section-title {
-    margin-bottom: 1rem;
   }
   
   .review-points li {
