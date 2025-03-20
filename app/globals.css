@@ -21,39 +21,51 @@
   font-style: normal;
 }
 
+:root {
+  --header-height: 60px;
+  --content-padding: 20px;
+  --primary-color: #333;
+  --background-color: #f9f9f9;
+  --header-background: white;
+  --header-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 * {
   text-wrap: balance;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   font-family: 'General Sans', Courier, sans-serif;
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-  color: #333;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #f9f9f9;
+  color: var(--primary-color);
+  background-color: var(--background-color);
   line-height: 1.6;
+  padding: var(--content-padding);
+  padding-top: calc(var(--header-height) + var(--content-padding) * 2);
+  overflow-x: hidden;
 }
 
 /* Header Styling */
 .header {
   display: flex;
   align-items: center;
-  justify-content: left;
-  padding: 10px;
+  justify-content: space-between;
+  padding: 0 var(--content-padding);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: white;
+  background-color: var(--header-background);
   z-index: 1000;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  height: 60px;
+  box-shadow: var(--header-shadow);
+  height: var(--header-height);
 }
 
 .favicon {
@@ -61,14 +73,133 @@ body {
   height: 40px;
   margin-right: 10px;
   display: block;
+  flex-shrink: 0;
 }
 
 .title-container {
   flex-grow: 1;
-  max-width: 80%;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-h1,
-.title {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
+h1, .title {
+  font-size: clamp(1.2rem, 5vw, 1.8rem);
+  margin: 0;
+}
+
+/* Main content styling */
+div {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+h2 {
+  margin: 1.5rem 0 1rem 0;
+  font-size: clamp(1.3rem, 4vw, 1.6rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: normal;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+/* Content Container Styles */
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.review-section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  color: var(--primary-color);
+}
+
+.instructions-container {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.instruction-text p {
+  margin-bottom: 1.2rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+.review-points {
+  list-style-position: inside;
+  padding-left: 0.5rem;
+  margin-top: 1rem;
+}
+
+.review-points li {
+  margin-bottom: 0.8rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  :root {
+    --content-padding: 15px;
+  }
+  
+  body {
+    padding-top: calc(var(--header-height) + var(--content-padding));
+  }
+  
+  .header {
+    height: auto;
+    min-height: var(--header-height);
+    padding: 10px var(--content-padding);
+  }
+  
+  .instructions-container {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --content-padding: 10px;
+  }
+  
+  .favicon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+  }
+  
+  h1, .title {
+    font-size: 1.2rem;
+  }
+  
+  body {
+    line-height: 1.4;
+  }
+  
+  .instructions-container {
+    padding: 1rem;
+  }
+  
+  .section-title {
+    margin-bottom: 1rem;
+  }
+  
+  .review-points li {
+    margin-bottom: 0.6rem;
+  }
 }
