@@ -33,16 +33,14 @@ export default function Home() {
 
   // Function to save answers and proceed to Phase 2
   const handleSaveAndProceed = () => {
-    // Store answers in localStorage or other state management
+    // Store answers in localStorage
     localStorage.setItem('randomizationReviewAnswers', JSON.stringify({
       paper: selectedPaper,
       answers: answers
     }));
-
-    // Navigate to Phase 2
-    // You can implement actual navigation based on your Next.js setup
-    alert('Answers saved! Ready to proceed to Phase 2.');
-    // Example: window.location.href = '/phase-2';
+  
+    // Navigate to Phase 2 using window.location
+    window.location.href = '/phase-2';
   };
 
   // Methods sections content for each paper
@@ -104,16 +102,16 @@ export default function Home() {
     <main className="content-container">
       <section className="review-section">
         <h1 className="section-title">Phase 1: Critical Review</h1>
-        
+
         <div className="instructions-container">
           <h2>Instructions</h2>
           <div className="instruction-text">
             <p>In this activity, you&apos;ll examine how randomization is reported in scientific papers and identify what information is missing.</p>
-            
+
             <p>First, select one of the papers below. Then review its methods section and identify questions you have about how randomization was implemented.</p>
-            
+
             <p>Consider the following as you review:</p>
-            
+
             <ul className="review-points">
               <li>Was randomization actually performed?</li>
               <li>What information is missing about the randomization procedure?</li>
@@ -124,9 +122,9 @@ export default function Home() {
         </div>
 
         <h2 className="paper-selection-heading">Select a paper to review:</h2>
-        
+
         <div className="paper-selection">
-          <button 
+          <button
             className={`paper-option ${selectedPaper === 'NMDA' ? 'selected' : ''}`}
             onClick={() => handlePaperSelect('NMDA')}
           >
@@ -134,7 +132,7 @@ export default function Home() {
             <p className="paper-citation">Jensen et al., Neuropharmacology, 2023</p>
           </button>
 
-          <button 
+          <button
             className={`paper-option ${selectedPaper === 'Environmental' ? 'selected' : ''}`}
             onClick={() => handlePaperSelect('Environmental')}
           >
@@ -142,7 +140,7 @@ export default function Home() {
             <p className="paper-citation">Rodriguez et al., J Neurosci Methods, 2022</p>
           </button>
 
-          <button 
+          <button
             className={`paper-option ${selectedPaper === 'Family' ? 'selected' : ''}`}
             onClick={() => handlePaperSelect('Family')}
           >
@@ -154,28 +152,28 @@ export default function Home() {
         {selectedPaper && (
           <div className="methods-review-section">
             <h2 className="methods-title">Methods Section Review</h2>
-            
+
             <div className="methods-container">
               <div className="methods-header">
                 <h3>{methodsSections[selectedPaper].title}</h3>
                 <p className="methods-citation">{methodsSections[selectedPaper].citation}</p>
               </div>
-              
-              <div 
+
+              <div
                 className="methods-content"
                 dangerouslySetInnerHTML={{ __html: methodsSections[selectedPaper].content }}
               />
             </div>
-            
+
             <div className="review-prompt-container">
               <h3>Review Questions</h3>
               <p>As you read the methods section above, consider the following questions about randomization and type your answers in the text boxes. Your answers will be used in Phase 2.</p>
-              
+
               <div className="review-questions">
                 <div className="review-question">
                   <h4>1. Was randomization performed?</h4>
                   <p>Look for explicit mentions of randomization or random assignment. If not explicitly stated, what clues suggest randomization might or might not have occurred?</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={answers.question1}
                     onChange={(e) => handleAnswerChange('question1', e.target.value)}
@@ -183,11 +181,11 @@ export default function Home() {
                     rows={4}
                   />
                 </div>
-                
+
                 <div className="review-question">
                   <h4>2. What information is missing about the randomization procedure?</h4>
                   <p>Consider what details about the randomization process are not reported but would be important to know.</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={answers.question2}
                     onChange={(e) => handleAnswerChange('question2', e.target.value)}
@@ -195,11 +193,11 @@ export default function Home() {
                     rows={4}
                   />
                 </div>
-                
+
                 <div className="review-question">
                   <h4>3. What would you need to replicate this study?</h4>
                   <p>Identify specific randomization details that would be necessary to conduct an exact replication.</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={answers.question3}
                     onChange={(e) => handleAnswerChange('question3', e.target.value)}
@@ -207,11 +205,11 @@ export default function Home() {
                     rows={4}
                   />
                 </div>
-                
+
                 <div className="review-question">
                   <h4>4. What should have been randomized?</h4>
                   <p>Are there aspects of the study design that should have been randomized but may not have been?</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={answers.question4}
                     onChange={(e) => handleAnswerChange('question4', e.target.value)}
@@ -220,9 +218,9 @@ export default function Home() {
                   />
                 </div>
               </div>
-              
+
               <div className="submit-section">
-                <button 
+                <button
                   className="save-proceed-button"
                   onClick={handleSaveAndProceed}
                   disabled={!answers.question1 || !answers.question2 || !answers.question3 || !answers.question4}
