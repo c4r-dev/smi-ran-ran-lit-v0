@@ -105,7 +105,7 @@ export default function PhaseThree() {
         <div className="instructions-container">
           <h2>Instructions</h2>
           <div className="instruction-text">
-            <p>In Phase 3, you'll compare your improvement suggestions with expert recommendations and reflect on how to apply these principles to future research.</p>
+            <p>In Phase 3, you&apos;ll compare your improvement suggestions with expert recommendations and reflect on how to apply these principles to future research.</p>
             
             <p>This final phase focuses on solidifying your understanding of randomization reporting best practices and preparing you to implement them in your own work.</p>
             
@@ -168,7 +168,7 @@ export default function PhaseThree() {
 
             <div className="expert-revision-section">
               <h2>Expert Revision</h2>
-              <p className="section-intro">Below is a comprehensive revision of the randomization reporting by an expert in the field. This represents a "gold standard" for how randomization should be reported for this type of study.</p>
+              <p className="section-intro">Below is a comprehensive revision of the randomization reporting by an expert in the field. This represents a &quot;gold standard&quot; for how randomization should be reported for this type of study.</p>
               
               {expertRevision && (
                 <div className="expert-revision-container">
@@ -183,7 +183,7 @@ export default function PhaseThree() {
             
             <div className="application-section">
               <h2>Reflection and Application</h2>
-              <p className="section-intro">Answer the following questions to reflect on what you've learned about randomization reporting.</p>
+              <p className="section-intro">Answer the following questions to reflect on what you&apos;ve learned about randomization reporting.</p>
               
               <div className="application-questions">
                 <div className="application-question">
@@ -212,7 +212,7 @@ export default function PhaseThree() {
                 
                 <div className="application-question">
                   <h4>3. Application to your research</h4>
-                  <p>How will you apply what you've learned about randomization reporting to your own future research or when reviewing others' work?</p>
+                  <p>How will you apply what you&apos;ve learned about randomization reporting to your own future research or when reviewing others&apos; work?</p>
                   <textarea 
                     className="answer-input"
                     value={applicationAnswers.futureUse}
@@ -224,7 +224,7 @@ export default function PhaseThree() {
                 
                 <div className="application-question">
                   <h4>4. Create a template</h4>
-                  <p>Based on what you've learned, write a general template for reporting randomization that could be adapted for different types of studies.</p>
+                  <p>Based on what you&apos;ve learned, write a general template for reporting randomization that could be adapted for different types of studies.</p>
                   <textarea 
                     className="answer-input"
                     value={applicationAnswers.newRandomization}
