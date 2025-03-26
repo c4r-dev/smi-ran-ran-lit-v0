@@ -12,7 +12,7 @@ export default function PhaseTwo() {
     improvement3: '',
     bestPractices: ''
   });
-  
+
   // Load saved data from Phase 1
   useEffect(() => {
     const data = localStorage.getItem('randomizationReviewAnswers');
@@ -33,12 +33,9 @@ export default function PhaseTwo() {
   const handleSubmit = () => {
     // Store Phase 2 answers in localStorage
     localStorage.setItem('randomizationRevisionAnswers', JSON.stringify(revisionAnswers));
-    
-    // Show completion message
-    alert('Great job! Your responses have been saved.');
-    
-    // Optional: Navigate back to Phase 1 or to a completion page
-    // router.push('/');
+
+    // Navigate to Phase 3
+    window.location.href = '/phase-3';
   };
 
   // Sample best practices for each paper type
@@ -81,20 +78,20 @@ export default function PhaseTwo() {
   // Get paper-specific information if available
   const getPaperInfo = () => {
     if (!savedData || !savedData.paper) return null;
-    
+
     const paperType = savedData.paper;
     const titles = {
       NMDA: "Effects of NMDA receptor antagonist on spatial memory in mice",
       Environmental: "Environmental enrichment effects on neuronal cell viability",
       Family: "Family environment effects on zebrafish brain development"
     };
-    
+
     const citations = {
       NMDA: "Jensen et al., Neuropharmacology, 2023",
       Environmental: "Rodriguez et al., J Neurosci Methods, 2022",
       Family: "Based on Antunes et al., Scientific Reports, 2021"
     };
-    
+
     return {
       title: titles[paperType],
       citation: citations[paperType],
@@ -108,14 +105,14 @@ export default function PhaseTwo() {
     <main className="content-container">
       <section className="review-section">
         <h1 className="section-title">Phase 2: Improving Randomization Reporting</h1>
-        
+
         <div className="instructions-container">
           <h2>Instructions</h2>
           <div className="instruction-text">
             <p>In Phase 1, you identified issues with how randomization was reported in the methods section. Now, you'll develop specific improvements to enhance the randomization reporting.</p>
-            
+
             <p>Review your Phase 1 answers and consider how the authors could better report their randomization procedures to improve transparency and reproducibility.</p>
-            
+
             <p>The goal of this phase is to develop concrete, specific recommendations that could be implemented in a revised methods section.</p>
           </div>
         </div>
@@ -124,8 +121,8 @@ export default function PhaseTwo() {
           <div className="alert-message">
             <h3>No data from Phase 1 found</h3>
             <p>Please complete Phase 1 before proceeding to Phase 2.</p>
-            <button 
-              className="save-proceed-button" 
+            <button
+              className="save-proceed-button"
               onClick={() => router.push('/')}
               style={{ marginTop: '1rem' }}
             >
@@ -142,24 +139,24 @@ export default function PhaseTwo() {
                   <p className="paper-citation">{paperInfo.citation}</p>
                 </div>
               )}
-              
+
               <h3 className="summary-heading">Your Phase 1 Answers</h3>
               <div className="summary-container">
                 <div className="summary-item">
                   <h4>Was randomization performed?</h4>
                   <p>{savedData.answers.question1}</p>
                 </div>
-                
+
                 <div className="summary-item">
                   <h4>What information is missing about the randomization procedure?</h4>
                   <p>{savedData.answers.question2}</p>
                 </div>
-                
+
                 <div className="summary-item">
                   <h4>What would you need to replicate this study?</h4>
                   <p>{savedData.answers.question3}</p>
                 </div>
-                
+
                 <div className="summary-item">
                   <h4>What should have been randomized?</h4>
                   <p>{savedData.answers.question4}</p>
@@ -169,24 +166,24 @@ export default function PhaseTwo() {
 
             <div className="best-practices-section">
               <h2>Best Practices for Randomization Reporting</h2>
-              
+
               {paperInfo && (
-                <div 
+                <div
                   className="best-practices-container"
                   dangerouslySetInnerHTML={{ __html: paperInfo.bestPractices }}
                 />
               )}
             </div>
-            
+
             <div className="revision-section">
               <h2>Improving the Methods Section</h2>
               <p className="section-intro">Based on your analysis in Phase 1 and the best practices above, provide specific recommendations to improve the randomization reporting in this methods section.</p>
-              
+
               <div className="revision-questions">
                 <div className="revision-question">
                   <h4>1. Specific details to add about randomization methods</h4>
                   <p>What specific information about the randomization procedure should be added?</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={revisionAnswers.improvement1}
                     onChange={(e) => handleAnswerChange('improvement1', e.target.value)}
@@ -194,11 +191,11 @@ export default function PhaseTwo() {
                     rows={4}
                   />
                 </div>
-                
+
                 <div className="revision-question">
                   <h4>2. Additional randomization procedures to implement</h4>
                   <p>What additional aspects of the study should be randomized?</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={revisionAnswers.improvement2}
                     onChange={(e) => handleAnswerChange('improvement2', e.target.value)}
@@ -206,11 +203,11 @@ export default function PhaseTwo() {
                     rows={4}
                   />
                 </div>
-                
+
                 <div className="revision-question">
                   <h4>3. Write an improved randomization paragraph</h4>
                   <p>Draft a paragraph that could be added to the methods section to properly describe the randomization procedures.</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={revisionAnswers.improvement3}
                     onChange={(e) => handleAnswerChange('improvement3', e.target.value)}
@@ -218,11 +215,11 @@ export default function PhaseTwo() {
                     rows={6}
                   />
                 </div>
-                
+
                 <div className="revision-question">
                   <h4>4. Which best practices are most important for this study?</h4>
                   <p>From the list of best practices, which 3-5 would be most crucial to implement in this specific study?</p>
-                  <textarea 
+                  <textarea
                     className="answer-input"
                     value={revisionAnswers.bestPractices}
                     onChange={(e) => handleAnswerChange('bestPractices', e.target.value)}
@@ -231,9 +228,9 @@ export default function PhaseTwo() {
                   />
                 </div>
               </div>
-              
+
               <div className="submit-section">
-                <button 
+                <button
                   className="save-proceed-button"
                   onClick={handleSubmit}
                   disabled={!revisionAnswers.improvement1 || !revisionAnswers.improvement2 || !revisionAnswers.improvement3 || !revisionAnswers.bestPractices}
